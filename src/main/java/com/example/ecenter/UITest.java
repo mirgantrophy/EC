@@ -10,7 +10,7 @@ import com.vaadin.ui.UI;
 @SpringUI
 @Theme("valo")
 @Title("Electrolysis Center")
-@Widgetset("/resources.com.example.ecenter.dashboard.DashboardWidgetSet") 
+//@Widgetset("com.vaadin.demo.dashboard.DashboardWidgetSet")
 public class UITest extends UI 
 {
 
