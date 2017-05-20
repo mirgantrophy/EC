@@ -8,9 +8,8 @@ import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.UI;
 
 @SpringUI
-@Theme("valo")
+@Theme("mytheme")
 @Title("Electrolysis Center")
-//@Widgetset("com.vaadin.demo.dashboard.DashboardWidgetSet")
 public class UITest extends UI 
 {
 

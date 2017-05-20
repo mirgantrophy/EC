@@ -1,5 +1,13 @@
+/*
+ * TODO
+ * somehow fix the login panel(potential widgetset issue)...
+ * add listener to sign in button, if credentials are valid, proceed to dashboard(view)
+ */
+
+
 package com.example.ecenter;
 
+import com.vaadin.annotations.Theme;
 import com.vaadin.event.ShortcutAction.KeyCode;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.server.Page;
@@ -21,7 +29,7 @@ import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
 
-//@SpringUI
+@Theme("mytheme")
 @SuppressWarnings("serial")
 public class LoginView extends VerticalLayout {
 
@@ -33,9 +41,9 @@ public class LoginView extends VerticalLayout {
         setComponentAlignment(loginForm, Alignment.MIDDLE_CENTER);
 
         Notification notification = new Notification(
-                "Welcome to Dashboard Demo");
+                "Electrolysis Center Demo");
         notification
-                .setDescription("<span>This application is not real, it only demonstrates an application built with the <a href=\"https://vaadin.com\">Vaadin framework</a>.</span> <span>No username or password is required, just click the <b>Sign In</b> button to continue.</span>");
+                .setDescription("<span>This is a demo application for Electrolysis Center.</span> <span>No username or password is required, just click the <b>Sign In</b> button to continue.</span>");
         notification.setHtmlContentAllowed(true);
         notification.setStyleName("tray dark small closable login-help");
         notification.setPosition(Position.BOTTOM_CENTER);
@@ -98,6 +106,7 @@ public class LoginView extends VerticalLayout {
         labels.addComponent(welcome);
 
         Label title = new Label("Electrolysis Center");
+        
         title.setSizeUndefined();
         title.addStyleName(ValoTheme.LABEL_H3);
         title.addStyleName(ValoTheme.LABEL_LIGHT);
