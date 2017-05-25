@@ -22,8 +22,7 @@ public class UITest extends UI
 
 	private void updateContent() 
 	{
-		setContent(new LoginView());
-		
+		setContent(new Book());
 	}
 
 }

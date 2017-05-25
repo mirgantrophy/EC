@@ -1,5 +1,5 @@
 /*
- * TODO
+- * TODO
  * somehow fix the login panel(potential widgetset issue)...
  * add listener to sign in button, if credentials are valid, proceed to dashboard(view)
  */
