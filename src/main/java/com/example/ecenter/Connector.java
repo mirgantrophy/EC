@@ -1,5 +1,5 @@
 /* TODO
- * Prepared Statements
+ * Establish SSL connectivity
  */
 package com.example.ecenter;
 

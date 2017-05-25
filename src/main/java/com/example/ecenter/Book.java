@@ -13,13 +13,15 @@ import com.vaadin.ui.Panel;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Component;
 import com.vaadin.ui.themes.ValoTheme;
 
 public class Book extends HorizontalLayout
 {
-	private TextField search, firstName, lastName, email, address, phoneNumber, startDate;
+	private TextField search, firstName, lastName, email, address, phoneNumber, monthField, dayField, yearField;
 	private Panel mainPanel;
 	private VerticalLayout panelLayout;
+	private HorizontalLayout dateLayout;
 	private Button create, edit, delete;
 	private String date; //perhaps there is an easier way to do this
 	private Connector c;
@@ -67,9 +69,24 @@ public class Book extends HorizontalLayout
 		phoneNumber = new TextField();
 		phoneNumber.setPlaceholder("Phone Number");
 		
-		startDate = new TextField();
-		startDate.setPlaceholder("Date Started"); 
-		//date should be checked or converted into the proper type!
+		dateLayout = new HorizontalLayout();
+		monthField = new TextField();
+		monthField.setPlaceholder("MM");
+		dayField = new TextField();
+		dayField.setPlaceholder("DD");
+		yearField = new TextField();
+		yearField.setPlaceholder("YYYY");
+		
+		dateLayout.addComponent(monthField);
+		dateLayout.addComponent(dayField);
+		dateLayout.addComponent(yearField);
+
+		/*
+		 * TODO
+		 * limit length of fields & automatically proceed
+		 * to the next field after the string limit has
+		 * been met.
+		 */
 		
 		create = new Button("Add Client");
 		create.addClickListener(new Button.ClickListener() 
@@ -78,19 +95,19 @@ public class Book extends HorizontalLayout
 			@Override
 			public void buttonClick(ClickEvent event) 
 			{
-				
+				c = new Connector();
 				Client temp = new Client();
-				//parseDate();
 				temp.setfirstName(firstName.getValue());
 				temp.setlastName(lastName.getValue());
 				temp.setEmail(email.getValue());
 				temp.setAddress(address.getValue());
 				temp.setphoneNumber(phoneNumber.getValue()); 
-				temp.setdateStarted(startDate.getValue());
+				temp.setdateStarted(parseDate());
 				Notification x = new Notification("Client *CREATED* in *MEMORY*");
 				x.setDelayMsec(20000);
 				x.show(Page.getCurrent());
-				}
+				c.addClient(temp);
+			}
 			
 		});
 		
@@ -100,7 +117,7 @@ public class Book extends HorizontalLayout
 		panelLayout.addComponent(email);
 		panelLayout.addComponent(address);
 		panelLayout.addComponent(phoneNumber);
-		panelLayout.addComponent(startDate);
+		panelLayout.addComponent(dateLayout); //obviously this wont look pretty initially
 		
 		panelLayout.addComponent(create);
 		
@@ -108,15 +125,8 @@ public class Book extends HorizontalLayout
 			
 	}
 	
-	private void parseDate() //array index out of bounds exception (-1)
-	//though this worked in prior applications
-	//need to further investigate the implementation of getValue();
+	private String parseDate() //SQL accepts the following: YYYY-MM-DD
 	{
-		date = "";
-		String entry = startDate.getValue();
-		String month = entry.substring(0, entry.indexOf("-"));
-		String day = entry.substring(entry.indexOf("-")+1, entry.lastIndexOf("-"));
-		String year = entry.substring(entry.lastIndexOf("-")+ 1);
-		date = year + "-" + month + "-" + day;
+		return date = yearField.getValue() + "-" + monthField.getValue() + "-" + dayField.getValue();
 	}
 }
