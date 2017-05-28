@@ -1,38 +1,33 @@
 /*
  * TODO
- * implement strength length limiters
+ * Begin main panel. should list the first nth number of contacts.
+ * based on recent visits or by name? scroll down and render every name alphabetically
  */
-package com.example.ecenter;
+package com.example.ecenter.view;
 
-import com.vaadin.server.Page;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.Notification;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Button.ClickEvent;
-import com.vaadin.ui.Component;
-import com.vaadin.ui.themes.ValoTheme;
+import com.example.ecenter.Connector;
+import com.example.ecenter.Client;
 
-public class Book extends HorizontalLayout
+public class AddressBookView extends HorizontalLayout
 {
 	private TextField search, firstName, lastName, email, address, phoneNumber, monthField, dayField, yearField;
 	private Panel mainPanel;
 	private VerticalLayout panelLayout;
-	private HorizontalLayout dateLayout;
+	private HorizontalLayout dateLayout, editPanel;
 	private Button create, edit, delete;
-	private String date; //perhaps there is an easier way to do this
-	private Connector c;
+	private String date;
+	private Connector dbConnection;
 	
-	public Book()
+	public AddressBookView()
 	{
 		moreStuff();
-		//Notification n = new Notification("Hello, world!");
-		//n.setDelayMsec(20000);
-		//n.show(Page.getCurrent());
-		//doStuff();
 	}
 	
 	private void doStuff()
@@ -56,26 +51,34 @@ public class Book extends HorizontalLayout
 		
 		firstName = new TextField();
 		firstName.setPlaceholder("First Name");
+		firstName.setMaxLength(30);
 		
 		lastName = new TextField();
 		lastName.setPlaceholder("Last Name");
+		lastName.setMaxLength(30);
 		
 		email = new TextField();
 		email.setPlaceholder("Email Address");
+		email.setMaxLength(50);
 		
 		address = new TextField();
 		address.setPlaceholder("Home Address");
+		address.setMaxLength(50);
 		
 		phoneNumber = new TextField();
 		phoneNumber.setPlaceholder("Phone Number");
+		phoneNumber.setMaxLength(10);
 		
 		dateLayout = new HorizontalLayout();
 		monthField = new TextField();
 		monthField.setPlaceholder("MM");
+		monthField.setMaxLength(2);
 		dayField = new TextField();
 		dayField.setPlaceholder("DD");
+		dayField.setMaxLength(2);
 		yearField = new TextField();
 		yearField.setPlaceholder("YYYY");
+		yearField.setMaxLength(4);
 		
 		dateLayout.addComponent(monthField);
 		dateLayout.addComponent(dayField);
@@ -83,9 +86,8 @@ public class Book extends HorizontalLayout
 
 		/*
 		 * TODO
-		 * limit length of fields & automatically proceed
-		 * to the next field after the string limit has
-		 * been met.
+		 * automatically proceed to the next field 
+		 * after the string limit has been met.
 		 */
 		
 		create = new Button("Add Client");
@@ -95,18 +97,21 @@ public class Book extends HorizontalLayout
 			@Override
 			public void buttonClick(ClickEvent event) 
 			{
-				c = new Connector();
+				dbConnection = new Connector();
 				Client temp = new Client();
 				temp.setfirstName(firstName.getValue());
 				temp.setlastName(lastName.getValue());
 				temp.setEmail(email.getValue());
 				temp.setAddress(address.getValue());
 				temp.setphoneNumber(phoneNumber.getValue()); 
-				temp.setdateStarted(parseDate());
-				Notification x = new Notification("Client *CREATED* in *MEMORY*");
-				x.setDelayMsec(20000);
-				x.show(Page.getCurrent());
-				c.addClient(temp);
+				temp.setstartDate(parseDate());
+				dbConnection.addClient(temp); 
+				
+				/*
+				 * TODO
+				 * confirm object is created and disposed of correctly
+				 * and make sure no data contaminations occur
+				 */
 			}
 			
 		});
@@ -117,11 +122,16 @@ public class Book extends HorizontalLayout
 		panelLayout.addComponent(email);
 		panelLayout.addComponent(address);
 		panelLayout.addComponent(phoneNumber);
-		panelLayout.addComponent(dateLayout); //obviously this wont look pretty initially
+		panelLayout.addComponent(dateLayout); 
 		
 		panelLayout.addComponent(create);
 		
-		this.addComponent(panelLayout); //add all the items to the newly created object
+		this.addComponent(panelLayout); 
+		
+		/*
+		 * TODO
+		 * begin theme and finalize layout
+		 */
 			
 	}
 	

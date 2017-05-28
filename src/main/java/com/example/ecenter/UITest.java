@@ -6,10 +6,13 @@ import com.vaadin.annotations.Widgetset;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.UI;
+import com.example.ecenter.view.*;
 
+@SuppressWarnings("serial")
 @SpringUI
 @Theme("mytheme")
 @Title("Electrolysis Center")
+@Widgetset("com.vaadin.v7.Vaadin7WidgetSet")
 public class UITest extends UI 
 {
 
@@ -22,7 +25,7 @@ public class UITest extends UI
 
 	private void updateContent() 
 	{
-		setContent(new Book());
+		setContent(new ScheduleView());
 	}
 
 }

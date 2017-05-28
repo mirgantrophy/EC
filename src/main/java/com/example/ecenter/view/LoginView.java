@@ -1,11 +1,10 @@
 /*
 - * TODO
- * somehow fix the login panel(potential widgetset issue)...
  * add listener to sign in button, if credentials are valid, proceed to dashboard(view)
  */
 
 
-package com.example.ecenter;
+package com.example.ecenter.view;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.event.ShortcutAction.KeyCode;

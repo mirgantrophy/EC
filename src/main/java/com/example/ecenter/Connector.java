@@ -30,7 +30,7 @@ public class Connector
 			prep.setString(3, object.getAddress());
 			prep.setString(4, object.getEmail());
 			prep.setString(5, object.getphoneNumber());
-			prep.setString(6, object.getdateStarted());
+			prep.setString(6, object.getstartDate());
 			prep.execute();
 			
 			System.out.println("closing SQL connection");

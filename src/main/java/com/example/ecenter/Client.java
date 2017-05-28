@@ -2,10 +2,9 @@ package com.example.ecenter;
 
 public class Client 
 {
-	private String firstName, lastName, address, email, dateStarted, phoneNumber;
+	private String firstName, lastName, address, email, startDate, phoneNumber;
 	private long userId;
-	//private Date startDate
-	public Client(String firstName, String lastName, String address, String email, String phoneNumber, String dateStarted, long userId)
+	public Client(String firstName, String lastName, String address, String email, String phoneNumber, String startDate, long userId)
 	{
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -13,7 +12,7 @@ public class Client
 		this.email = email;
 		this.phoneNumber = phoneNumber;
 		this.userId = userId;
-		this.dateStarted = dateStarted;
+		this.startDate = startDate;
 	}
 	
 	public Client()
@@ -21,14 +20,14 @@ public class Client
 		
 	}
 	
-	public String getdateStarted()
+	public String getstartDate()
 	{
-		return dateStarted;
+		return startDate;
 	}
 	
-	public void setdateStarted(String dateStarted)
+	public void setstartDate(String startDate)
 	{
-		this.dateStarted = dateStarted;
+		this.startDate = startDate;
 	}
 	
 	public String getfirstName()
