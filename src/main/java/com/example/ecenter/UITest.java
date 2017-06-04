@@ -19,12 +19,13 @@ public class UITest extends UI
 	@Override
 	protected void init(VaadinRequest request) 
 	{
-		updateContent();	
+		updateContent();
+		
 	}
 
 	private void updateContent() 
 	{
-		setContent(new ScheduleView2());
+		setContent(new ScheduleView());
 	}
 
 }
