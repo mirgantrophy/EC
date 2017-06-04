@@ -14,7 +14,7 @@
 		<servlet-class>com.vaadin.demo.dashboard.DashboardServlet</servlet-class>
 		<init-param>
 			<param-name>UI</param-name>
-			<param-value>com.example.ecenter.UITest</param-value>
+			<param-value>com.calendar.ctest.MyUI</param-value>
 		</init-param>
 	</servlet>
 	<servlet-mapping>
