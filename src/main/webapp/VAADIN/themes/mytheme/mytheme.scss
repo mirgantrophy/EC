@@ -31,12 +31,10 @@
 
 @import "../valo/valo.scss";
 @import "login.scss";
-@import "views/schedule.scss";
 
 @mixin mytheme {
   @include valo;
   @include login-view;
-  @include schedule-view;
 
   // Insert your own theme rules here
 }
