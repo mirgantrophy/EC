@@ -1,4 +1,4 @@
-package com.mirgantrophy.ecenter.ui;
+package com.example.ecenter;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -6,16 +6,13 @@
 
 package com.example.ecenter.view;
 
+import com.vaadin.annotations.Theme;
 import com.vaadin.event.ShortcutAction.KeyCode;
-import com.vaadin.navigator.View;
-import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.server.Page;
 import com.vaadin.server.Responsive;
 import com.vaadin.shared.Position;
-import com.vaadin.spring.annotation.SpringComponent;
 import com.vaadin.spring.annotation.SpringUI;
-import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
@@ -31,11 +28,9 @@ import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
 
+@Theme("mytheme")
 @SuppressWarnings("serial")
-@SpringView(name = LoginView.VIEW_NAME)
-//@SpringComponent
-public class LoginView extends VerticalLayout implements View {
-	public static final String VIEW_NAME = "Login";
+public class LoginView extends VerticalLayout {
 
     public LoginView() {
         setSizeFull();
@@ -47,7 +42,7 @@ public class LoginView extends VerticalLayout implements View {
         Notification notification = new Notification(
                 "Electrolysis Center Demo");
         notification
-                .setDescription("<span>This is a demo application for The Electrolysis Center.</span> <span>No username or password is required, just click the <b>Sign In</b> button to continue.</span>");
+                .setDescription("<span>This is a demo application for Electrolysis Center.</span> <span>No username or password is required, just click the <b>Sign In</b> button to continue.</span>");
         notification.setHtmlContentAllowed(true);
         notification.setStyleName("tray dark small closable login-help");
         notification.setPosition(Position.BOTTOM_CENTER);
@@ -89,16 +84,6 @@ public class LoginView extends VerticalLayout implements View {
         fields.addComponents(username, password, signin);
         fields.setComponentAlignment(signin, Alignment.BOTTOM_LEFT);
 
-        signin.addClickListener(new ClickListener() 
-        {
-
-			@Override
-			public void buttonClick(ClickEvent event) 
-			{
-				//broken
-			}
-        	
-        });
         /*signin.addClickListener(new ClickListener() {
             @Override
             public void buttonClick(final ClickEvent event) {
@@ -127,12 +112,5 @@ public class LoginView extends VerticalLayout implements View {
         labels.addComponent(title);
         return labels;
     }
-
-	@Override
-	public void enter(ViewChangeEvent event) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 
 }
