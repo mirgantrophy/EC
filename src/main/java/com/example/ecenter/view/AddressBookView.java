@@ -5,6 +5,10 @@
  */
 package com.example.ecenter.view;
 
+import com.vaadin.navigator.View;
+import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
+import com.vaadin.spring.annotation.SpringComponent;
+import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.HorizontalLayout;
@@ -13,10 +17,14 @@ import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Button.ClickEvent;
 import com.example.ecenter.Connector;
+import com.mirgantrophy.ecenter.ui.Menu;
 import com.example.ecenter.Client;
-
-public class AddressBookView extends HorizontalLayout
+@SpringView(name = AddressBookView.VIEW_NAME)
+@SpringComponent
+public class AddressBookView extends HorizontalLayout implements View
 {
+	public static final String VIEW_NAME = "Address Book";
+	private Menu menu;
 	private TextField search, firstName, lastName, email, address, phoneNumber, monthField, dayField, yearField;
 	private Panel mainPanel;
 	private VerticalLayout panelLayout;
@@ -138,5 +146,11 @@ public class AddressBookView extends HorizontalLayout
 	private String parseDate() //SQL accepts the following: YYYY-MM-DD
 	{
 		return date = yearField.getValue() + "-" + monthField.getValue() + "-" + dayField.getValue();
+	}
+
+	@Override
+	public void enter(ViewChangeEvent event) {
+		// TODO Auto-generated method stub
+		
 	}
 }

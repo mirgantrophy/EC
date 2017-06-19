@@ -1,4 +1,4 @@
-package com.example.ecenter.view;
+package com.example.ecenter;
 
 import java.util.Date;
 
