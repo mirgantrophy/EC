@@ -43,6 +43,8 @@ public class Home extends HorizontalLayout implements View
                 ScheduleView.VIEW_NAME, VaadinIcons.EDIT);
        menu.addView(new AddressBookView(), AddressBookView.VIEW_NAME, AddressBookView.VIEW_NAME,
                 VaadinIcons.BOOK);
+       menu.addView(new AboutView(), AboutView.VIEW_NAME, AboutView.VIEW_NAME,
+               VaadinIcons.INFO_CIRCLE);
        //dashboardview and salesview
 
         navigator.addViewChangeListener(viewChangeListener);
