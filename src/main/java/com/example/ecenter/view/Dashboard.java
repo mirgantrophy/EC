@@ -15,6 +15,7 @@ import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.Responsive;
 import com.vaadin.navigator.ViewDisplay;
+import com.vaadin.spring.annotation.SpringComponent;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.CssLayout;
@@ -26,13 +27,13 @@ import com.vaadin.ui.Panel;
 import com.vaadin.ui.TextArea;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
-//@Component //anything directly injected into a new view must implement component
+@SpringComponent //anything directly injected into a new view must implement component
 @SpringView(name = Dashboard.VIEW_NAME)
-public class Dashboard extends Panel implements View //Extends Panel
+public class Dashboard extends Panel
 {
     public static final String EDIT_ID = "dashboard-edit";
     public static final String TITLE_ID = "dashboard-title";
-	public static final String VIEW_NAME = "Dashboard";
+	public static final String VIEW_NAME = "";
 	private final VerticalLayout root;
 	private Label titleLabel;
 	private CssLayout dashboardPanels;
@@ -112,14 +113,5 @@ public class Dashboard extends Panel implements View //Extends Panel
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-
-	@Override
-	public void enter(ViewChangeEvent event) 
-	{
-		// TODO Auto-generated method stub
-		
-	}
-
 
 }

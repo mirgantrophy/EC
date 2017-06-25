@@ -6,6 +6,7 @@
 
 package com.example.ecenter.view;
 
+import com.mirgantrophy.ecenter.ui.UITest;
 import com.vaadin.event.ShortcutAction.KeyCode;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
@@ -95,7 +96,7 @@ public class LoginView extends VerticalLayout implements View {
 			@Override
 			public void buttonClick(ClickEvent event) 
 			{
-				//broken
+				
 			}
         	
         });

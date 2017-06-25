@@ -1531,6 +1531,14 @@ div.v-layout.v-horizontal.v-widget {
 	vertical-align: top;
 }
 
+.mytheme {
+	@media screen and (max-width: 480px) {
+	.notifications.v-window {
+		right: $view-padding;
+	}
+}
+}
+
 .mytheme.v-app, .mytheme.v-app-loading {
 	font: 400 15px/1.55 "Open Sans", sans-serif;
 	color: #464646;
@@ -12597,6 +12605,218 @@ div.v-layout.v-horizontal.v-widget {
 	color: #fff;
 	text-decoration: none;
 	border-bottom: 1px solid #888;
+}
+
+.mytheme .dashboard-view.dashboard-view {
+	padding: $view-padding;
+	overflow: visible;
+}
+
+.mytheme .dashboard-view.dashboard-view .sparks {
+	background: white;
+	color: #474747;
+	border-radius: 4px;
+	border: 1px solid #d5d5d5;
+	-webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.05);
+	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.05);
+	margin-bottom: $view-padding;
+}
+
+.mytheme .dashboard-view.dashboard-view .sparks[width-range~="0-680px"] .spark {
+	width: 50%;
+}
+
+.mytheme .dashboard-view.dashboard-view .sparks[width-range~="0-680px"] .spark:nth-child(2n+1) {
+	border-left: none;
+}
+
+.mytheme .dashboard-view.dashboard-view .sparks[width-range~="0-680px"] .spark:nth-child(n+3) {
+	border-top: 1px solid #eaeaea;
+}
+
+.mytheme .dashboard-view.dashboard-view .sparks[width-range~="0-270px"] .spark {
+	width: 100%;
+	border-left: none;
+	border-top: 1px solid #eaeaea;
+}
+
+.mytheme .dashboard-view.dashboard-view .sparks[width-range~="0-270px"] .spark:first-child {
+	border-top: none;
+}
+
+.mytheme .dashboard-view.dashboard-view .spark {
+	float: left;
+	text-align: center;
+	width: 25%;
+	padding: 18px 18px;
+	border-left: 1px solid #eaeaea;
+	line-height: 1.35;
+}
+
+.mytheme .dashboard-view.dashboard-view .spark  > tbody {
+	display: inline-block;
+}
+
+.mytheme .dashboard-view.dashboard-view .spark:first-child {
+	border-left: none;
+}
+
+.mytheme .dashboard-view.dashboard-view .dashboard-panel-toolbar {
+	padding: 1px 0 1px 18px;
+	height: 34px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.mytheme .dashboard-view.dashboard-view .dashboard-panels {
+	display: block;
+	height: 100%;
+	margin: 0 $view-padding;
+}
+
+.mytheme .dashboard-view.dashboard-view .dashboard-panels .card {
+	height: 100%;
+	overflow: hidden;
+	padding: 34px $view-padding 0;
+	position: relative;
+}
+
+.mytheme .dashboard-view.dashboard-view .dashboard-panels .card .v-table, .mytheme .dashboard-view.dashboard-view .dashboard-panels .card .v-table-table {
+	background: transparent;
+}
+
+.mytheme .dashboard-view.dashboard-view .dashboard-panels .top10-revenue .card {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.mytheme .dashboard-view.dashboard-view .dashboard-panels .top10-revenue .v-table-table {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.mytheme .dashboard-view.dashboard-view .dashboard-panels .top10-revenue .v-table-cell-wrapper {
+	padding-left: $view-padding;
+	padding-right: $view-padding;
+}
+
+.mytheme .dashboard-view.dashboard-view .dashboard-panels .top10-revenue .v-table-cell-content {
+	border-color: #eaeaea;
+}
+
+.mytheme .dashboard-view.dashboard-view .dashboard-panels .top10-revenue .v-table-cell-content-rowheader {
+	color: #969696;
+}
+
+.mytheme .dashboard-view.dashboard-view .dashboard-panels .top10-revenue .v-table-cell-content-rowheader .v-table-cell-wrapper {
+	padding-right: 0;
+}
+
+.mytheme .dashboard-view.dashboard-view .dashboard-panels .dashboard-panel-slot {
+	padding: $view-padding;
+	min-height: 220px;
+}
+
+.mytheme .dashboard-view.dashboard-view .dashboard-panels[width-range~="0-700px"] .dashboard-panel-slot {
+	width: 100% !important;
+}
+
+.mytheme .dashboard-view.dashboard-view .dashboard-panels[width-range~="701px-"] .dashboard-panel-slot {
+	width: 50% !important;
+}
+
+.mytheme .dashboard-view.dashboard-view .dashboard-panels[height-range~="0-440px"] .dashboard-panel-slot {
+	height: 100%;
+}
+
+.mytheme .dashboard-view.dashboard-view .dashboard-panels[height-range~="441px-"] .dashboard-panel-slot {
+	height: 50%;
+}
+
+.mytheme .dashboard-view.dashboard-view .dashboard-panels .dashboard-panel-slot.max {
+	width: 100% !important;
+	height: 100%;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.mytheme .dashboard-view.dashboard-view .dashboard-panels .notes .card {
+	padding: 34px 0 0;
+}
+
+.mytheme .dashboard-view.dashboard-view .dashboard-panels .notes .v-textarea {
+	border-top: 1px solid #dfdfdf;
+	padding: 20px 20px 0;
+	line-height: 20px;
+	font-size: 13px;
+	background: #fffdf2 url(img/notes-bg.png) repeat;
+	background-attachment: local;
+	color: #545145;
+	overflow: auto;
+}
+
+.mytheme .dashboard-view[width-range~="0-480px"] {
+	padding-left: $view-padding;
+	padding-right: $view-padding;
+}
+
+.mytheme .notifications.v-window {
+	overflow: visible !important;
+	right: $view-padding;
+	left: auto !important;
+	max-width: 90%;
+	-webkit-transform-origin: 243px -7px;
+	-moz-transform-origin: 243px -7px;
+	-ms-transform-origin: 243px -7px;
+	-o-transform-origin: 243px -7px;
+	transform-origin: 243px -7px;
+}
+
+.mytheme .notifications.v-window.v-window-animate-in {
+	-webkit-animation: animate-in-scale-up 260ms cubic-bezier(0.68, 0.37, 0.51, 1.37);
+	-moz-animation: animate-in-scale-up 260ms cubic-bezier(0.68, 0.37, 0.51, 1.37);
+	animation: animate-in-scale-up 260ms cubic-bezier(0.68, 0.37, 0.51, 1.37);
+}
+
+.mytheme .notifications.v-window:before, .mytheme .notifications.v-window:after {
+	content: "";
+	position: absolute;
+	top: -14px;
+	right: 53px;
+	border: 7px solid transparent;
+	width: 0;
+	height: 0;
+	border-bottom-color: white;
+}
+
+.mytheme .notifications.v-window:before {
+	top: -17px;
+	margin-right: -1px;
+	border-width: 8px;
+	border-bottom-width: 8px;
+	border-bottom-color: rgba(0, 0, 0, 0.09098);
+}
+
+.mytheme .notifications.v-window .v-window-header {
+	color: #60a0ea;
+}
+
+.mytheme .notifications.v-window .v-window-outerheader:after, .mytheme .notifications.v-window .v-scrollable:before {
+	display: none;
+}
+
+.mytheme .notifications.v-window .notification-item {
+	font-size: 14px;
+}
+
+.mytheme .notifications.v-window .notification-title {
+	font-weight: 600;
+}
+
+.mytheme .notifications.v-window .notification-time {
+	font-size: 12px;
+	color: gray;
 }
 
 .mytheme .login-screen {

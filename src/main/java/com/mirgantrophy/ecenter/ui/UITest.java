@@ -25,6 +25,7 @@ public class UITest extends UI //pass the UI to the main view and create a navig
         setLocale(request.getLocale());
 
         showMainView();
+        //setContent(new LoginView());
 	}
 
 	private void showMainView() 
