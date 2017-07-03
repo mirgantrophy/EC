@@ -14,7 +14,7 @@ public class Connector
 	private final String PASSWORD = "";
 	private Connection conn;
 
-	public void addClient(Client object)
+	public void addClient(Contact object)
 	{
 		try
 		{

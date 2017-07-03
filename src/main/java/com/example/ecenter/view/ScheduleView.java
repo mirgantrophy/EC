@@ -14,6 +14,7 @@ import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
+import com.vaadin.server.Responsive;
 import com.vaadin.spring.annotation.SpringComponent;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.Alignment;
@@ -58,95 +59,59 @@ import com.vaadin.v7.ui.components.calendar.handler.BasicDateClickHandler;
 import com.vaadin.v7.ui.components.calendar.handler.BasicWeekClickHandler;
 
 @SpringView(name = ScheduleView.VIEW_NAME)
-@Theme("valo-test") //find these dependencies
+@Theme("mytheme") //find these dependencies
 @SpringComponent
 @SuppressWarnings("deprecation")
 public class ScheduleView extends GridLayout implements View {
 
     private static final long serialVersionUID = -5436777475398410597L;
-
     private static final String DEFAULT_ITEMID = "DEFAULT";
 
     private enum Mode {
         MONTH, WEEK, DAY;
     }
-
     /**
      * This Gregorian calendar is used to control dates and time inside of this
      * test application.
      */
     private GregorianCalendar calendar;
-
     /** Target calendar component that this test application is made for. */
     private Calendar calendarComponent;
-
     private Date currentMonthsFirstDate;
-
     private final Label captionLabel = new Label("");
-
     private Button monthButton;
-
     private Button weekButton;
-
     private Button dayButton;
-
     private Button nextButton;
-
     private Button prevButton;
-
     private ComboBox timeZoneSelect;
-
     private ComboBox formatSelect;
-
     private ComboBox localeSelect;
-
     private CheckBox hideWeekendsButton;
-
     private CheckBox readOnlyButton;
-
     private TextField captionField;
-
     private Window scheduleEventPopup;
-
     private final FormLayout scheduleEventFieldLayout = new FormLayout();
     private FieldGroup scheduleEventFieldGroup = new FieldGroup();
     private Binder<CalendarEvent> scheduledEventBinder = new Binder<>();
-
     private Button deleteEventButton;
-
     private Button applyEventButton;
-
     private Mode viewMode = Mode.WEEK;
-
     private BasicEventProvider dataSource;
-
     private Button addNewEvent;
-
     private boolean testBench = false;
-
     private String calendarHeight = null;
-
     private String calendarWidth = null;
-
     private CheckBox disabledButton;
-
     private Integer firstHour;
-
     private Integer lastHour;
-
     private Integer firstDay;
-
     private Integer lastDay;
-
     private Locale defaultLocale = Locale.US;
-
     private boolean showWeeklyView;
-
     private boolean useSecondResolution;
-
     private DateField startDateField;
     private DateField endDateField;
-    
     public static final String VIEW_NAME = "Schedule";
 
     public ScheduleView() {
@@ -155,11 +120,11 @@ public class ScheduleView extends GridLayout implements View {
         setMargin(true);
         setSpacing(true);
         
-        CssLayout viewContainer = new CssLayout();
+      /*  CssLayout viewContainer = new CssLayout();
         viewContainer.addStyleName("valo-content");
-        viewContainer.setSizeFull();
+        viewContainer.setSizeFull();*/
         
-
+        Responsive.makeResponsive(this);
         firstHour = 9;
         lastHour = 20;
         initContent();
@@ -277,16 +242,13 @@ public class ScheduleView extends GridLayout implements View {
         controlPanel.setComponentAlignment(formatSelect, Alignment.MIDDLE_LEFT);
         controlPanel.setComponentAlignment(localeSelect, Alignment.MIDDLE_LEFT);
         controlPanel.setComponentAlignment(hideWeekendsButton,
-                Alignment.MIDDLE_LEFT);
+                Alignment.BOTTOM_LEFT);
         controlPanel.setComponentAlignment(readOnlyButton,
-                Alignment.MIDDLE_LEFT);
+                Alignment.BOTTOM_LEFT);
         controlPanel.setComponentAlignment(disabledButton,
-                Alignment.MIDDLE_LEFT);
-        controlPanel.setComponentAlignment(addNewEvent, Alignment.MIDDLE_LEFT);
+                Alignment.BOTTOM_LEFT);
+        controlPanel.setComponentAlignment(addNewEvent, Alignment.BOTTOM_RIGHT);
 
-        Label viewCaption = new Label("Calendar");
-        viewCaption.setStyleName(ValoTheme.LABEL_H1);
-        addComponent(viewCaption);
         addComponent(controlPanel);
         addComponent(hl);
         addComponent(calendarComponent);
@@ -385,6 +347,8 @@ public class ScheduleView extends GridLayout implements View {
 
     public void initAddNewEventButton() {
         addNewEvent = new Button("Add new event");
+        addNewEvent.addStyleName("primary");
+        addNewEvent.addStyleName(ValoTheme.BUTTON_SMALL);
         addNewEvent.addClickListener(new Button.ClickListener() {
 
             private static final long serialVersionUID = -8307244759142541067L;

@@ -31,7 +31,7 @@ public class UITest extends UI //pass the UI to the main view and create a navig
 	private void showMainView() 
 	{
 		addStyleName(ValoTheme.UI_WITH_MENU);
-        setContent(new Home(UITest.this));
+        setContent(new MainView(UITest.this));
         getNavigator().navigateTo(getNavigator().getState());
 		
 	}

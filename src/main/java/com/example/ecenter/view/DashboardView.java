@@ -25,9 +25,9 @@ import com.vaadin.ui.TextArea;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
 
-@SpringView(name = SampleView.VIEW_NAME)
+@SpringView(name = DashboardView.VIEW_NAME)
 @SpringComponent
-public class SampleView extends Panel implements View
+public class DashboardView extends Panel implements View
 {
 	public static final String TITLE_ID = "dashboard-title";
 	public static final String EDIT_ID = "dashboard-edit";
@@ -36,7 +36,7 @@ public class SampleView extends Panel implements View
 	private Label titleLabel;
 	private final VerticalLayout root;
 	private CssLayout dashboardPanels;
-	public SampleView()
+	public DashboardView()
 	{
 		addStyleName(ValoTheme.PANEL_BORDERLESS);
 		setSizeFull();
@@ -64,7 +64,7 @@ public class SampleView extends Panel implements View
 		header.addStyleName("viewheader");
 		header.setSpacing(true);
 		
-		titleLabel = new Label("Electrolysis Dashboard Alpha Preview");
+		titleLabel = new Label("Electrolysis Dashboard Alpha Preview 2");
 		titleLabel.setId(TITLE_ID);
 		titleLabel.setSizeUndefined();
 		titleLabel.addStyleName(ValoTheme.LABEL_H1);

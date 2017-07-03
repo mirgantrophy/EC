@@ -10,7 +10,7 @@ import com.vaadin.ui.Alignment;
 import com.vaadin.ui.CustomLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
-@SpringView(name = SampleView.VIEW_NAME)
+@SpringView(name = DashboardView.VIEW_NAME)
 
 public class AboutView extends VerticalLayout implements View
 {

@@ -16,14 +16,14 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Panel;
 
 //@SpringView(name = Home.VIEW_NAME)
-public class Home extends HorizontalLayout implements View 
+public class MainView extends HorizontalLayout implements View 
 {
 //	public static final String VIEW_NAME = "";
 	private Menu menu;
 	private Panel dashboardPanel;
 	
 
-	public Home(UITest ui)
+	public MainView(UITest ui)
 	{
 
         setSpacing(false);
@@ -38,7 +38,7 @@ public class Home extends HorizontalLayout implements View
 
         navigator.setErrorView(ErrorView.class);
         menu = new Menu(navigator);
-        menu.addView(new SampleView(), SampleView.VIEW_NAME, "Home", VaadinIcons.HOME);
+        menu.addView(new DashboardView(), DashboardView.VIEW_NAME, "Home", VaadinIcons.HOME);
         menu.addView(new ScheduleView(), ScheduleView.VIEW_NAME,
                 ScheduleView.VIEW_NAME, VaadinIcons.EDIT);
        menu.addView(new AddressBookView(), AddressBookView.VIEW_NAME, AddressBookView.VIEW_NAME,
