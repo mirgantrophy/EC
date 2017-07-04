@@ -1,10 +1,10 @@
 package com.example.ecenter;
 
-public class Contact 
+public class Client 
 {
 	private String firstName, lastName, address, email, startDate, phoneNumber, medicine, pastTreatments;
 	private long userId;
-	public Contact(String firstName, String lastName, String address, String email, String phoneNumber, String startDate, String medicine, String pastTreatments, long userId)
+	public Client(String firstName, String lastName, String address, String email, String phoneNumber, String startDate, String medicine, String pastTreatments, long userId)
 	{
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -17,7 +17,7 @@ public class Contact
 		this.pastTreatments = pastTreatments;
 	}
 	
-	public Contact()
+	public Client()
 	{
 		
 	}

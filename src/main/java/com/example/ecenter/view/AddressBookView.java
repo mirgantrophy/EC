@@ -16,6 +16,7 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.themes.ValoTheme;
 import com.vaadin.ui.Button.ClickEvent;
 
 import java.util.Arrays;
@@ -23,7 +24,7 @@ import java.util.List;
 
 import com.example.ecenter.Connector;
 import com.mirgantrophy.ecenter.ui.Menu;
-import com.example.ecenter.Contact;
+import com.example.ecenter.Client;
 @SpringView(name = AddressBookView.VIEW_NAME)
 @SpringComponent
 public class AddressBookView extends HorizontalLayout implements View
@@ -36,41 +37,49 @@ public class AddressBookView extends HorizontalLayout implements View
 	private HorizontalLayout dateLayout, editPanel;
 	private Button create, edit, delete;
 	private String date;
-	private Grid<Contact> contactList = new Grid<>();
-	private List<Contact> clients = Arrays.asList(
-			new Contact("Madeline", "A", "123 Test St.", "test@gmail.gov", "555-555-5554", "February 2017", "N/A", "N/A", 1),
-			new Contact("Ashlee", "B", "123 Test St.", "test@gmail.com", "555-555-5555", "February 2017", "N/A", "N/A", 2),
-			new Contact("Londa", "C", "123 Test St.", "test@gmail.net", "555-555-5556", "February 2017", "N/A", "N/A", 3),
-			new Contact("Gabbie", "D", "123 Test St.", "test@gmail.org", "555-555-5557", "February 2017", "N/A", "N/A", 4),
-			new Contact("Londa", "E", "123 Test St.", "test@gmail.net", "555-555-5558", "February 2017", "N/A", "N/A", 5),
-			new Contact("Avorion", "F", "123 Test St.", "test@gmail.net", "555-555-5559", "February 2017", "N/A", "N/A", 6),
-			new Contact("Xanion", "G", "123 Test St.", "test@gmail.net", "555-555-5560", "February 2017", "N/A", "N/A", 7),
-			new Contact("Trinium", "H", "123 Test St.", "test@gmail.net", "555-555-5561", "February 2017", "N/A", "N/A", 8),
-			new Contact("Naonite", "I", "123 Test St.", "test@gmail.net", "555-555-5562", "February 2017", "N/A", "N/A", 9),
-			new Contact("Squillium", "J", "123 Test St.", "test@gmail.net", "555-555-5563", "February 2017", "N/A", "N/A", 10),
-			new Contact("Picard", "K", "123 Test St.", "test@gmail.net", "555-555-5564", "February 2017", "N/A", "N/A", 11),
-			new Contact("Richard", "L", "123 Test St.", "test@gmail.net", "555-555-5565", "February 2017", "N/A", "N/A", 12),
-			new Contact("Rickard", "M", "123 Test St.", "test@gmail.net", "555-555-5566", "February 2017", "N/A", "N/A", 13),
-			new Contact("Bobby", "N", "123 Test St.", "test@gmail.net", "555-555-5567", "February 2017", "N/A", "N/A", 14),
-			new Contact("Bob", "O", "123 Test St.", "test@gmail.net", "555-555-5568", "February 2017", "N/A", "N/A", 15),
-			new Contact("Ron", "P", "123 Test St.", "test@gmail.net", "555-555-5569", "February 2017", "N/A", "N/A", 16),
-			new Contact("Bill", "Q", "123 Test St.", "test@gmail.net", "555-555-5570", "February 2017", "N/A", "N/A", 17),
-			new Contact("Greg", "R", "123 Test St.", "test@gmail.net", "555-555-5571", "February 2017", "N/A", "N/A", 18),
-			new Contact("Juan", "S", "123 Test St.", "test@gmail.net", "555-555-5572", "February 2017", "N/A", "N/A", 19),
-			new Contact("Squidward", "T", "123 Test St.", "test@gmail.net", "555-555-5573", "February 2017", "N/A", "N/A", 20));
+	Grid<Client> contactList = new Grid<>();
+	private List<Client> clients = Arrays.asList(
+			new Client("Madeline", "A", "123 Test St.", "test@gmail.gov", "555-555-5554", "February 2017", "N/A", "N/A", 1),
+			new Client("Ashlee", "B", "123 Test St.", "test@gmail.com", "555-555-5555", "February 2017", "N/A", "N/A", 2),
+			new Client("Londa", "C", "123 Test St.", "test@gmail.net", "555-555-5556", "February 2017", "N/A", "N/A", 3),
+			new Client("Gabbie", "D", "123 Test St.", "test@gmail.org", "555-555-5557", "February 2017", "N/A", "N/A", 4),
+			new Client("Londa", "E", "123 Test St.", "test@gmail.net", "555-555-5558", "February 2017", "N/A", "N/A", 5),
+			new Client("Avorion", "F", "123 Test St.", "test@gmail.net", "555-555-5559", "February 2017", "N/A", "N/A", 6),
+			new Client("Xanion", "G", "123 Test St.", "test@gmail.net", "555-555-5560", "February 2017", "N/A", "N/A", 7),
+			new Client("Trinium", "H", "123 Test St.", "test@gmail.net", "555-555-5561", "February 2017", "N/A", "N/A", 8),
+			new Client("Naonite", "I", "123 Test St.", "test@gmail.net", "555-555-5562", "February 2017", "N/A", "N/A", 9),
+			new Client("Squillium", "J", "123 Test St.", "test@gmail.net", "555-555-5563", "February 2017", "N/A", "N/A", 10),
+			new Client("Picard", "K", "123 Test St.", "test@gmail.net", "555-555-5564", "February 2017", "N/A", "N/A", 11),
+			new Client("Richard", "L", "123 Test St.", "test@gmail.net", "555-555-5565", "February 2017", "N/A", "N/A", 12),
+			new Client("Rickard", "M", "123 Test St.", "test@gmail.net", "555-555-5566", "February 2017", "N/A", "N/A", 13),
+			new Client("Bobby", "N", "123 Test St.", "test@gmail.net", "555-555-5567", "February 2017", "N/A", "N/A", 14),
+			new Client("Bob", "O", "123 Test St.", "test@gmail.net", "555-555-5568", "February 2017", "N/A", "N/A", 15),
+			new Client("Ron", "P", "123 Test St.", "test@gmail.net", "555-555-5569", "February 2017", "N/A", "N/A", 16),
+			new Client("Bill", "Q", "123 Test St.", "test@gmail.net", "555-555-5570", "February 2017", "N/A", "N/A", 17),
+			new Client("Greg", "R", "123 Test St.", "test@gmail.net", "555-555-5571", "February 2017", "N/A", "N/A", 18),
+			new Client("Juan", "S", "123 Test St.", "test@gmail.net", "555-555-5572", "February 2017", "N/A", "N/A", 19),
+			new Client("Squidward", "T", "123 Test St.", "test@gmail.net", "555-555-5573", "February 2017", "N/A", "N/A", 20));
 	
 	private TextField filter = new TextField();
+	private Button addContact = new Button("New Client");
+	//InformationForm infoForm = new InformationForm();
+	
+	
 	
 	public AddressBookView()
 	{
 		initConfig();
-		buildLayout();
-		
+		buildLayout();	
 	}
 	
 	private void buildLayout() 
 	{
-		VerticalLayout left = new VerticalLayout(contactList);
+		HorizontalLayout actionBar = new HorizontalLayout(filter, addContact);
+		actionBar.setWidth("100%");
+		filter.setWidth("100%");
+		actionBar.setExpandRatio(filter, 1);
+		
+		VerticalLayout left = new VerticalLayout(actionBar, contactList);
 		left.setSizeFull();
 		contactList.setSizeFull();
 		left.setExpandRatio(contactList, 1);
@@ -85,10 +94,17 @@ public class AddressBookView extends HorizontalLayout implements View
 
 	private void initConfig() 
 	{
+		//addContact.addClickListener(e -> infoForm.edit(new Client()));
+		filter.setPlaceholder("Search clients...");
+		filter.addStyleName(ValoTheme.BUTTON_PRIMARY);
+		//filter.addValueChangeListener(e -> refreshClients(e.getText()));
+		
+		
 		contactList.setSelectionMode(Grid.SelectionMode.SINGLE);
 		contactList.setItems(clients);
-		contactList.addColumn(Contact::getfirstName).setCaption("First Name");
-		contactList.addColumn(Contact::getlastName).setCaption("Last Name");
+		contactList.addColumn(Client::getfirstName).setCaption("First Name");
+		contactList.addColumn(Client::getlastName).setCaption("Last Name");
+		//contactList.addSelectionListener(e -> infoForm.edit((Client) contactList.getSelectedItems()));
 	}
 
 	private void doStuff()
@@ -159,7 +175,7 @@ public class AddressBookView extends HorizontalLayout implements View
 			public void buttonClick(ClickEvent event) 
 			{
 				//dbConnection = new Connector();
-				Contact temp = new Contact();
+				Client temp = new Client();
 				temp.setfirstName(firstName.getValue());
 				temp.setlastName(lastName.getValue());
 				temp.setEmail(email.getValue());
