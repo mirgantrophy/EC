@@ -1,10 +1,12 @@
 package com.example.ecenter;
 
-public class Client 
+import java.io.Serializable;
+
+public class Client implements Serializable, Cloneable
 {
 	private String firstName, lastName, address, email, startDate, phoneNumber, medicine, pastTreatments;
 	private long userId;
-	public Client(String firstName, String lastName, String address, String email, String phoneNumber, String startDate, String medicine, String pastTreatments, long userId)
+	/*public Client(String firstName, String lastName, String address, String email, String phoneNumber, String startDate, String medicine, String pastTreatments, long userId)
 	{
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -15,6 +17,15 @@ public class Client
 		this.startDate = startDate;
 		this.medicine = medicine;
 		this.pastTreatments = pastTreatments;
+	}*/
+	
+	public Client(String firstName, String lastName, String address, String email, String phoneNumber)
+	{
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.address = address;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
 	}
 	
 	public Client()

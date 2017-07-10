@@ -49,13 +49,10 @@ public class DashboardView extends Panel implements View
 		Responsive.makeResponsive(this);
 		
 		root.addComponent(buildHeader());
-		//root.addComponent(buildSparklines());
 		
 		Component content = buildContent();
 		root.addComponent(content);
 		root.setExpandRatio(content, 1);
-		
-		
 	}
 	
 	private Component buildHeader() 
@@ -79,8 +76,6 @@ public class DashboardView extends Panel implements View
 		header.addComponent(tools);
 		
 		return header;
-		
-		
 	}
 
 	private NotificationsButton buildNotificationsButton() 

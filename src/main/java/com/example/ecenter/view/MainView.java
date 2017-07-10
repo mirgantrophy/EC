@@ -1,26 +1,17 @@
 package com.example.ecenter.view;
 
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.mirgantrophy.ecenter.ui.Menu;
 import com.mirgantrophy.ecenter.ui.UITest;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.*;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
-import com.vaadin.spring.annotation.SpringView;
-import com.vaadin.spring.navigator.SpringViewProvider;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.Panel;
 
-//@SpringView(name = Home.VIEW_NAME)
 public class MainView extends HorizontalLayout implements View 
 {
-//	public static final String VIEW_NAME = "";
+
 	private Menu menu;
-	private Panel dashboardPanel;
 	
 
 	public MainView(UITest ui)
@@ -28,7 +19,6 @@ public class MainView extends HorizontalLayout implements View
 
         setSpacing(false);
         setStyleName("main-screen");
-        
         
         CssLayout viewContainer = new CssLayout();
         viewContainer.addStyleName("valo-content");
@@ -66,7 +56,7 @@ public class MainView extends HorizontalLayout implements View
         
         @Override
         public void afterViewChange(ViewChangeEvent event) {
-        	System.out.println(event.getViewName());
+        	//System.out.println(event.getViewName());
             menu.setActiveView(event.getViewName());
         }
 
