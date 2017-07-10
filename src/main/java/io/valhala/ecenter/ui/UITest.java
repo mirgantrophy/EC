@@ -11,7 +11,7 @@ import com.vaadin.ui.themes.ValoTheme;
 
 import io.valhala.ecenter.view.MainView;
 
-import com.example.ecenter.view.*;
+import io.valhala.ecenter.view.*;
 
 @SuppressWarnings("serial")
 @SpringUI
