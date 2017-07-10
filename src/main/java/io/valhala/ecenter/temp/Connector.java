@@ -1,7 +1,7 @@
 /* TODO
  * Establish SSL connectivity
  */
-package com.example.ecenter;
+package io.valhala.ecenter.temp;
 
 import java.sql.*;
 import java.util.Calendar;

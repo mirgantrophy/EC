@@ -1,4 +1,4 @@
-package com.example.ecenter;
+package io.valhala.ecenter.temp;
 
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinService;

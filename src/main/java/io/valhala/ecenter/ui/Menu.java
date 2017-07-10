@@ -1,4 +1,4 @@
-package com.mirgantrophy.ecenter.ui;
+package io.valhala.ecenter.ui;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -39,14 +39,10 @@ public class Menu extends CssLayout {
 
     private CssLayout menuItemsLayout;
     private CssLayout menuPart;
-    
-
-
-
+  
     public Menu(Navigator navigator) 
     {
         this.navigator = navigator;
-
  
         setPrimaryStyleName(ValoTheme.MENU_ROOT);
         menuPart = new CssLayout();

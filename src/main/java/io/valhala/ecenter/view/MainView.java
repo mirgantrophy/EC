@@ -1,12 +1,13 @@
-package com.example.ecenter.view;
+package io.valhala.ecenter.view;
 
-import com.mirgantrophy.ecenter.ui.Menu;
-import com.mirgantrophy.ecenter.ui.UITest;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.*;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.HorizontalLayout;
+
+import io.valhala.ecenter.ui.Menu;
+import io.valhala.ecenter.ui.UITest;
 
 public class MainView extends HorizontalLayout implements View 
 {

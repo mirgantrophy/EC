@@ -4,7 +4,7 @@
  * based on recent visits or by name? scroll down and render every name alphabetically
  * SQL accepts the following: YYYY-MM-DD
  */
-package com.example.ecenter.view;
+package io.valhala.ecenter.view;
 
 import com.vaadin.data.Binder;
 import com.vaadin.navigator.View;
@@ -18,9 +18,11 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
+
+import io.valhala.ecenter.temp.Client;
+
 import java.util.Arrays;
 import java.util.List;
-import com.example.ecenter.Client;
 
 @SpringView(name = AddressBookView.VIEW_NAME)
 @SpringComponent
@@ -68,21 +70,28 @@ public class AddressBookView extends HorizontalLayout implements View
 		actionBar.setExpandRatio(filter, 1);
 		
 		VerticalLayout left = new VerticalLayout(actionBar, contactList);
-		left.setSizeFull();
+		left.setSizeUndefined();
 		contactList.setSizeFull();
 		left.setExpandRatio(contactList, 1);
 		
 		HorizontalLayout mainLayout = new HorizontalLayout(left);
-		mainLayout.setSizeFull();
+		mainLayout.setSizeUndefined();
 		mainLayout.setExpandRatio(left, 1);
 		
 		addComponent(mainLayout);
 		
+		addComponents(mainLayout, contactForm);
+
+		contactForm.setVisible(false);
 	}
 
 	private void initConfig() 
 	{
-		//addContact.addClickListener(e -> contactForm.edit(new Client()));
+		addContact.addClickListener(event -> 
+		{
+			contactForm.setClient(new Client());
+		});
+		
 		filter.setPlaceholder("Search clients...");
 		addContact.addStyleName(ValoTheme.BUTTON_PRIMARY);
 		//filter.addValueChangeListener(e -> refreshContacts(e.getText()));
@@ -99,24 +108,13 @@ public class AddressBookView extends HorizontalLayout implements View
 			}
 			else
 			{
-				addComponent(contactForm);
 				contactForm.setClient(event.getValue());
-				//System.out.println(event.getValue());
 			}
 		});
-
-		/*contactList.addSelectionListener(e -> {
-			contactForm.edit((Client) contactList.getSelectedItems());
-		});*/
-		/*
-		 * Java.Util.Hashset cannot be cast to com.example.ecenter.Client at AddressBookView.java:108
-		 */
 	}
 
 	@Override
 	public void enter(ViewChangeEvent event) {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	private class ContactForm extends FormLayout
@@ -129,7 +127,7 @@ public class AddressBookView extends HorizontalLayout implements View
 		{
 			initConf();
 			initLayout();
-			setSizeFull();
+			setSizeUndefined();
 			binder.bindInstanceFields(this);
 		}
 		
@@ -137,6 +135,7 @@ public class AddressBookView extends HorizontalLayout implements View
 		{
 			save = new Button("Save");
 			cancel = new Button("Cancel");
+			cancel.addClickListener(e -> this.cancel());
 			
 			firstName = new TextField();
 			firstName.setPlaceholder("First Name");
@@ -154,6 +153,12 @@ public class AddressBookView extends HorizontalLayout implements View
 			phoneNumber.setPlaceholder("Phone Number");
 			
 		}
+		private void cancel() 
+		{
+			setClient(null);
+			setVisible(false);
+		}
+
 		public void initLayout() 
 		{
 			HorizontalLayout actions = new HorizontalLayout(save, cancel);
@@ -164,9 +169,9 @@ public class AddressBookView extends HorizontalLayout implements View
 		
 		public void setClient(Client client)
 		{
+			setVisible(true);
 			this.client = client;
 			binder.setBean(client);
-			//this.setVisible(true);
 		}
 	}
 }

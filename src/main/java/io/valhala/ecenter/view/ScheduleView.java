@@ -1,4 +1,4 @@
-package com.example.ecenter.view;
+package io.valhala.ecenter.view;
 
 import java.text.DateFormatSymbols;
 import java.util.Date;
@@ -6,7 +6,6 @@ import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.TimeZone;
 
-import com.example.ecenter.Appointment;
 import com.vaadin.annotations.Theme;
 import com.vaadin.data.Binder;
 import com.vaadin.data.ValidationException;
@@ -57,6 +56,8 @@ import com.vaadin.v7.ui.components.calendar.event.BasicEventProvider;
 import com.vaadin.v7.ui.components.calendar.event.CalendarEvent;
 import com.vaadin.v7.ui.components.calendar.handler.BasicDateClickHandler;
 import com.vaadin.v7.ui.components.calendar.handler.BasicWeekClickHandler;
+
+import io.valhala.ecenter.temp.Appointment;
 
 @SpringView(name = ScheduleView.VIEW_NAME)
 @Theme("mytheme") //find these dependencies

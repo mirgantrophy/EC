@@ -1,4 +1,4 @@
-package com.example.ecenter.view;
+package io.valhala.ecenter.view;
 
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.View;

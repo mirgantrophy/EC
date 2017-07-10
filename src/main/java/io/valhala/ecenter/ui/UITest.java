@@ -1,4 +1,4 @@
-package com.mirgantrophy.ecenter.ui;
+package io.valhala.ecenter.ui;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Title;
@@ -8,6 +8,9 @@ import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.themes.ValoTheme;
+
+import io.valhala.ecenter.view.MainView;
+
 import com.example.ecenter.view.*;
 
 @SuppressWarnings("serial")

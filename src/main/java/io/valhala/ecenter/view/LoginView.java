@@ -4,9 +4,8 @@
  */
 
 
-package com.example.ecenter.view;
+package io.valhala.ecenter.view;
 
-import com.mirgantrophy.ecenter.ui.UITest;
 import com.vaadin.event.ShortcutAction.KeyCode;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
@@ -31,6 +30,8 @@ import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
+
+import io.valhala.ecenter.ui.UITest;
 
 @SuppressWarnings("serial")
 @SpringView(name = LoginView.VIEW_NAME)
