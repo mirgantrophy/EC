@@ -70,17 +70,10 @@ public class AddressBookView extends HorizontalLayout implements View
 		actionBar.setExpandRatio(filter, 1);
 		
 		VerticalLayout left = new VerticalLayout(actionBar, contactList);
-		left.setSizeUndefined();
-		contactList.setSizeFull();
+		left.setSizeFull();
 		left.setExpandRatio(contactList, 1);
 		
-		HorizontalLayout mainLayout = new HorizontalLayout(left);
-		mainLayout.setSizeUndefined();
-		mainLayout.setExpandRatio(left, 1);
-		
-		addComponent(mainLayout);
-		
-		addComponents(mainLayout, contactForm);
+		addComponents(left, contactForm);
 
 		contactForm.setVisible(false);
 	}

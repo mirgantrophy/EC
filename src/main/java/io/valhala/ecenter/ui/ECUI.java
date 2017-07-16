@@ -10,16 +10,18 @@ import com.vaadin.ui.UI;
 import com.vaadin.ui.themes.ValoTheme;
 
 import io.valhala.ecenter.view.MainView;
-
+import io.valhala.ecenter.temp.AccessControl;
+import io.valhala.ecenter.temp.BasicAccessControl;
 import io.valhala.ecenter.view.*;
 
 @SuppressWarnings("serial")
 @SpringUI
 @Theme("mytheme")
 @Title("Electrolysis Center")
-@Widgetset("com.vaadin.v7.Vaadin7WidgetSet")
-public class UITest extends UI //pass the UI to the main view and create a navigator.
+@Widgetset("com.vaadin.v7.Vaadin7WidgetSet") //need a v8 widgetset that extends the v7 widgetset
+public class ECUI extends UI
 {
+	private AccessControl accessControl = new BasicAccessControl();
 	
 	@Override
 	protected void init(VaadinRequest request) 
@@ -28,20 +30,19 @@ public class UITest extends UI //pass the UI to the main view and create a navig
         setLocale(request.getLocale());
 
         showMainView();
-        //setContent(new LoginView());
 	}
 
 	private void showMainView() 
 	{
 		addStyleName(ValoTheme.UI_WITH_MENU);
-        setContent(new MainView(UITest.this));
+        setContent(new MainView(ECUI.this));
         getNavigator().navigateTo(getNavigator().getState());
 		
 	}
 
-	public static UITest get()
+	public static ECUI get()
 	{
-		return (UITest) UI.getCurrent();
+		return (ECUI) UI.getCurrent();
 	}
 
 }

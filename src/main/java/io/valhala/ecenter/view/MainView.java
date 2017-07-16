@@ -7,19 +7,16 @@ import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.HorizontalLayout;
 
 import io.valhala.ecenter.ui.Menu;
-import io.valhala.ecenter.ui.UITest;
+import io.valhala.ecenter.ui.ECUI;
 
 public class MainView extends HorizontalLayout implements View 
 {
-
 	private Menu menu;
-	
-
-	public MainView(UITest ui)
+	public MainView(ECUI ui)
 	{
-
+        setSizeFull();
         setSpacing(false);
-        setStyleName("main-screen");
+        addStyleName("main-screen");
         
         CssLayout viewContainer = new CssLayout();
         viewContainer.addStyleName("valo-content");
@@ -32,18 +29,18 @@ public class MainView extends HorizontalLayout implements View
         menu.addView(new DashboardView(), DashboardView.VIEW_NAME, "Home", VaadinIcons.HOME);
         menu.addView(new ScheduleView(), ScheduleView.VIEW_NAME,
                 ScheduleView.VIEW_NAME, VaadinIcons.EDIT);
-       menu.addView(new AddressBookView(), AddressBookView.VIEW_NAME, AddressBookView.VIEW_NAME,
+        menu.addView(new AddressBookView(), AddressBookView.VIEW_NAME, AddressBookView.VIEW_NAME,
                 VaadinIcons.BOOK);
-       menu.addView(new AboutView(), AboutView.VIEW_NAME, AboutView.VIEW_NAME,
+        menu.addView(new TransactionsView(), TransactionsView.VIEW_NAME, TransactionsView.VIEW_NAME, VaadinIcons.CASH);
+        menu.addView(new AboutView(), AboutView.VIEW_NAME, AboutView.VIEW_NAME,
                VaadinIcons.INFO_CIRCLE);
-       //dashboardview and salesview
-
+       
+       
         navigator.addViewChangeListener(viewChangeListener);
 
         addComponent(menu);
         addComponent(viewContainer);
         setExpandRatio(viewContainer, 1);
-        setSizeFull();
 	}
 
 	// notify the view menu about view changes so that it can display which view
@@ -57,7 +54,6 @@ public class MainView extends HorizontalLayout implements View
         
         @Override
         public void afterViewChange(ViewChangeEvent event) {
-        	//System.out.println(event.getViewName());
             menu.setActiveView(event.getViewName());
         }
 

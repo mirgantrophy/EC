@@ -1,3 +1,7 @@
+/*
+ * TODO
+ * mainview or menu causing incorrect layout
+ */
 package io.valhala.ecenter.view;
 
 import java.util.Iterator;
@@ -43,16 +47,17 @@ public class DashboardView extends Panel implements View
 		
 		root = new VerticalLayout();
 		root.setSizeFull();
+		root.setMargin(true);
 		root.addStyleName("dashboard-view");
 		root.setSpacing(false);
 		setContent(root);
 		Responsive.makeResponsive(this);
 		
 		root.addComponent(buildHeader());
-		
 		Component content = buildContent();
 		root.addComponent(content);
 		root.setExpandRatio(content, 1);
+
 	}
 	
 	private Component buildHeader() 
@@ -61,7 +66,7 @@ public class DashboardView extends Panel implements View
 		header.addStyleName("viewheader");
 		header.setSpacing(true);
 		
-		titleLabel = new Label("Electrolysis Dashboard Alpha Preview 2");
+		titleLabel = new Label("EC Preview Alpha 4");
 		titleLabel.setId(TITLE_ID);
 		titleLabel.setSizeUndefined();
 		titleLabel.addStyleName(ValoTheme.LABEL_H1);
@@ -74,7 +79,6 @@ public class DashboardView extends Panel implements View
 		tools.setSpacing(true);
 		tools.addStyleName("toolbar");
 		header.addComponent(tools);
-		
 		return header;
 	}
 
@@ -125,7 +129,6 @@ public class DashboardView extends Panel implements View
 		dashboardPanels = new CssLayout();
 		dashboardPanels.addStyleName("dashboard-panels");
 		Responsive.makeResponsive(dashboardPanels);
-		
 		
 		dashboardPanels.addComponent(buildNotes());
 		

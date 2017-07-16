@@ -31,7 +31,7 @@ import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
 
-import io.valhala.ecenter.ui.UITest;
+import io.valhala.ecenter.ui.ECUI;
 
 @SuppressWarnings("serial")
 @SpringView(name = LoginView.VIEW_NAME)

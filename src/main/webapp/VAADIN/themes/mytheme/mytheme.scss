@@ -34,11 +34,13 @@ $v-layout-spacing-horizontal: round($v-unit-size / 1.8) !default;
 @import "../valo/valo.scss";
 @import "login.scss";
 @import "dashboardview.scss";
+@import "common.scss";
 
 @mixin mytheme {
   @include valo;
   @include login-view;
   @include dashboard-dashboard-view;
+  @include dashboard-common;
 
 
   // login screen - for small screens, see below
