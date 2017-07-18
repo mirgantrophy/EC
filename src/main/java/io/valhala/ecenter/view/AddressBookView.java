@@ -1,9 +1,10 @@
 /*
  * TODO
- * Begin main panel. should list the first nth number of contacts.
  * based on recent visits or by name? scroll down and render every name alphabetically
  * SQL accepts the following: YYYY-MM-DD
  */
+
+//the grid displays properly when there are more than 2 columns..
 package io.valhala.ecenter.view;
 
 import com.vaadin.data.Binder;
@@ -26,7 +27,7 @@ import java.util.List;
 
 @SpringView(name = AddressBookView.VIEW_NAME)
 @SpringComponent
-public class AddressBookView extends HorizontalLayout implements View
+public class AddressBookView extends HorizontalLayout implements View //perhaps we should extend Grid?
 {
 	public static final String VIEW_NAME = "Address Book";
 	Grid<Client> contactList = new Grid<>(Client.class);
@@ -58,6 +59,7 @@ public class AddressBookView extends HorizontalLayout implements View
 	
 	public AddressBookView()
 	{
+		setSizeFull();
 		initConfig();
 		buildLayout();
 	}
@@ -70,7 +72,7 @@ public class AddressBookView extends HorizontalLayout implements View
 		actionBar.setExpandRatio(filter, 1);
 		
 		VerticalLayout left = new VerticalLayout(actionBar, contactList);
-		left.setSizeFull();
+		left.setSizeFull(); //or undefined
 		left.setExpandRatio(contactList, 1);
 		
 		addComponents(left, contactForm);
@@ -90,7 +92,7 @@ public class AddressBookView extends HorizontalLayout implements View
 		//filter.addValueChangeListener(e -> refreshContacts(e.getText()));
 		
 		contactList.setSelectionMode(Grid.SelectionMode.SINGLE);
-		contactList.setColumns("firstName", "lastName");
+		contactList.setColumns("firstName", "lastName");//, "phoneNumber", "address", "email");
 		contactList.setItems(clients);
 		
 		contactList.asSingleSelect().addValueChangeListener(event -> 
@@ -104,6 +106,7 @@ public class AddressBookView extends HorizontalLayout implements View
 				contactForm.setClient(event.getValue());
 			}
 		});
+		contactList.setSizeFull();
 	}
 
 	@Override
