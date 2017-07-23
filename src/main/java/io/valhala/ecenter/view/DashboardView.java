@@ -49,7 +49,7 @@ public class DashboardView extends Panel implements View
 		root.setSizeFull();
 		root.setMargin(true);
 		root.addStyleName("dashboard-view");
-		root.setSpacing(false);
+		root.setSpacing(true);
 		setContent(root);
 		Responsive.makeResponsive(this);
 		
@@ -131,6 +131,7 @@ public class DashboardView extends Panel implements View
 		Responsive.makeResponsive(dashboardPanels);
 		
 		dashboardPanels.addComponent(buildNotes());
+		dashboardPanels.addComponent(Temp());
 		
 		return dashboardPanels;
 	}
@@ -139,6 +140,17 @@ public class DashboardView extends Panel implements View
 	{
 		TextArea notes = new TextArea("Notes");
 		notes.setValue("Remember to tell Maddie she is the best. " + "\n" + "Londa was late today!");
+		notes.setSizeFull();
+		notes.addStyleName(ValoTheme.TEXTAREA_BORDERLESS);
+		Component panel = createContentWrapper(notes);
+		panel.addStyleName("notes");
+		return panel;
+	}
+	
+	private Component Temp() 
+	{
+		TextArea notes = new TextArea();
+		notes.setValue("New features coming soon!");
 		notes.setSizeFull();
 		notes.addStyleName(ValoTheme.TEXTAREA_BORDERLESS);
 		Component panel = createContentWrapper(notes);

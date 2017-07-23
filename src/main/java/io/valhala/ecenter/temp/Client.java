@@ -2,11 +2,18 @@ package io.valhala.ecenter.temp;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
+
 public class Client implements Serializable, Cloneable
 {
-	private String firstName, lastName, address, email, startDate, phoneNumber, medicine, pastTreatments;
+	@NotNull
+	private String firstName, lastName, address, email, startDate, phoneNumber;
+	@Null
+	private String medicine, pastTreatments;
+	@NotNull
 	private long userId;
-	/*public Client(String firstName, String lastName, String address, String email, String phoneNumber, String startDate, String medicine, String pastTreatments, long userId)
+	public Client(String firstName, String lastName, String address, String email, String phoneNumber, String startDate, String medicine, String pastTreatments, long userId)
 	{
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -17,7 +24,7 @@ public class Client implements Serializable, Cloneable
 		this.startDate = startDate;
 		this.medicine = medicine;
 		this.pastTreatments = pastTreatments;
-	}*/
+	}
 	
 	public Client(String firstName, String lastName, String address, String email, String phoneNumber)
 	{

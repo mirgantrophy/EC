@@ -12634,55 +12634,6 @@ div.v-layout.v-horizontal.v-widget {
 	overflow: visible;
 }
 
-.mytheme .dashboard-view.dashboard-view .sparks {
-	background: white;
-	color: #474747;
-	border-radius: 4px;
-	border: 1px solid #d5d5d5;
-	-webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.05);
-	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.05);
-	margin-bottom: $view-padding;
-}
-
-.mytheme .dashboard-view.dashboard-view .sparks[width-range~="0-680px"] .spark {
-	width: 50%;
-}
-
-.mytheme .dashboard-view.dashboard-view .sparks[width-range~="0-680px"] .spark:nth-child(2n+1) {
-	border-left: none;
-}
-
-.mytheme .dashboard-view.dashboard-view .sparks[width-range~="0-680px"] .spark:nth-child(n+3) {
-	border-top: 1px solid #eaeaea;
-}
-
-.mytheme .dashboard-view.dashboard-view .sparks[width-range~="0-270px"] .spark {
-	width: 100%;
-	border-left: none;
-	border-top: 1px solid #eaeaea;
-}
-
-.mytheme .dashboard-view.dashboard-view .sparks[width-range~="0-270px"] .spark:first-child {
-	border-top: none;
-}
-
-.mytheme .dashboard-view.dashboard-view .spark {
-	float: left;
-	text-align: center;
-	width: 25%;
-	padding: 18px 18px;
-	border-left: 1px solid #eaeaea;
-	line-height: 1.35;
-}
-
-.mytheme .dashboard-view.dashboard-view .spark  > tbody {
-	display: inline-block;
-}
-
-.mytheme .dashboard-view.dashboard-view .spark:first-child {
-	border-left: none;
-}
-
 .mytheme .dashboard-view.dashboard-view .dashboard-panel-toolbar {
 	padding: 1px 0 1px 18px;
 	height: 34px;
@@ -12706,33 +12657,6 @@ div.v-layout.v-horizontal.v-widget {
 
 .mytheme .dashboard-view.dashboard-view .dashboard-panels .card .v-table, .mytheme .dashboard-view.dashboard-view .dashboard-panels .card .v-table-table {
 	background: transparent;
-}
-
-.mytheme .dashboard-view.dashboard-view .dashboard-panels .top10-revenue .card {
-	padding-left: 0;
-	padding-right: 0;
-}
-
-.mytheme .dashboard-view.dashboard-view .dashboard-panels .top10-revenue .v-table-table {
-	-webkit-box-shadow: none;
-	box-shadow: none;
-}
-
-.mytheme .dashboard-view.dashboard-view .dashboard-panels .top10-revenue .v-table-cell-wrapper {
-	padding-left: $view-padding;
-	padding-right: $view-padding;
-}
-
-.mytheme .dashboard-view.dashboard-view .dashboard-panels .top10-revenue .v-table-cell-content {
-	border-color: #eaeaea;
-}
-
-.mytheme .dashboard-view.dashboard-view .dashboard-panels .top10-revenue .v-table-cell-content-rowheader {
-	color: #969696;
-}
-
-.mytheme .dashboard-view.dashboard-view .dashboard-panels .top10-revenue .v-table-cell-content-rowheader .v-table-cell-wrapper {
-	padding-right: 0;
 }
 
 .mytheme .dashboard-view.dashboard-view .dashboard-panels .dashboard-panel-slot {

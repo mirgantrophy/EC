@@ -1,12 +1,13 @@
 /*
  * TODO
- * based on recent visits or by name? scroll down and render every name alphabetically
+ * lazy loading + scroll down and render every name alphabetically
  * SQL accepts the following: YYYY-MM-DD
+ * Make a visually appealing contactForm and historyTab
  */
 
-//the grid displays properly when there are more than 2 columns..
 package io.valhala.ecenter.view;
 
+import com.vaadin.client.ui.VTabsheet.Tab;
 import com.vaadin.data.Binder;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
@@ -16,20 +17,20 @@ import com.vaadin.ui.Button;
 import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.TabSheet;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
-
 import io.valhala.ecenter.temp.Client;
-
 import java.util.Arrays;
 import java.util.List;
 
 @SpringView(name = AddressBookView.VIEW_NAME)
 @SpringComponent
-public class AddressBookView extends HorizontalLayout implements View //perhaps we should extend Grid?
+public class AddressBookView extends HorizontalLayout implements View
 {
 	public static final String VIEW_NAME = "Address Book";
+	private TabSheet panel = new TabSheet();
 	Grid<Client> contactList = new Grid<>(Client.class);
 	private List<Client> clients = Arrays.asList(
 			new Client("Sernie", "A", "123 Test St.", "test@gmail.gov", "555-555-5554"),
@@ -52,10 +53,10 @@ public class AddressBookView extends HorizontalLayout implements View //perhaps 
 			new Client("Greg", "R", "123 Test St.", "test@gmail.net", "555-555-5571"),
 			new Client("Juan", "S", "123 Test St.", "test@gmail.net", "555-555-5572"),
 			new Client("Squidward", "T", "123 Test St.", "test@gmail.net", "555-555-5573"));
-	
 	private ContactForm contactForm = new ContactForm();
 	private TextField filter = new TextField();
 	private Button addContact = new Button("New Client");
+	private ClientHistory history = new ClientHistory();
 	
 	public AddressBookView()
 	{
@@ -74,10 +75,12 @@ public class AddressBookView extends HorizontalLayout implements View //perhaps 
 		VerticalLayout left = new VerticalLayout(actionBar, contactList);
 		left.setSizeFull(); //or undefined
 		left.setExpandRatio(contactList, 1);
-		
-		addComponents(left, contactForm);
-
+		panel.addTab(contactForm, "Client Information");
+		panel.addTab(history, "History (Coming soon!)");
+		addComponents(left, panel);
+		panel.setVisible(false);
 		contactForm.setVisible(false);
+		history.setVisible(false);
 	}
 
 	private void initConfig() 
@@ -92,17 +95,21 @@ public class AddressBookView extends HorizontalLayout implements View //perhaps 
 		//filter.addValueChangeListener(e -> refreshContacts(e.getText()));
 		
 		contactList.setSelectionMode(Grid.SelectionMode.SINGLE);
-		contactList.setColumns("firstName", "lastName");//, "phoneNumber", "address", "email");
+		contactList.setColumns("firstName", "lastName");
 		contactList.setItems(clients);
 		
 		contactList.asSingleSelect().addValueChangeListener(event -> 
 		{
 			if(event.getValue() == null)
 			{
+				panel.setVisible(false);
 				contactForm.setVisible(false);
+				history.setVisible(false);
 			}
 			else
 			{
+				panel.setVisible(true);
+				history.setVisible(true);
 				contactForm.setClient(event.getValue());
 			}
 		});
@@ -111,6 +118,14 @@ public class AddressBookView extends HorizontalLayout implements View //perhaps 
 
 	@Override
 	public void enter(ViewChangeEvent event) {
+	}
+	
+	private class ClientHistory extends VerticalLayout
+	{
+		public ClientHistory()
+		{
+			setSizeUndefined();
+		}
 	}
 	
 	private class ContactForm extends FormLayout
@@ -152,6 +167,7 @@ public class AddressBookView extends HorizontalLayout implements View //perhaps 
 		private void cancel() 
 		{
 			setClient(null);
+			panel.setVisible(false);
 			setVisible(false);
 		}
 
@@ -170,4 +186,6 @@ public class AddressBookView extends HorizontalLayout implements View //perhaps 
 			binder.setBean(client);
 		}
 	}
+	
+
 }
