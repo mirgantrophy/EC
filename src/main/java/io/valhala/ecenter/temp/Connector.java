@@ -6,6 +6,8 @@ package io.valhala.ecenter.temp;
 import java.sql.*;
 import java.util.Calendar;
 
+import io.valhala.ecenter.domain.Client;
+
 public class Connector
 {
 	private final String JDC_DRIVER = "com.mysql.jdbc.Driver";
