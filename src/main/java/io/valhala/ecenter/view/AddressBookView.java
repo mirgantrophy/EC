@@ -168,7 +168,7 @@ public class AddressBookView extends HorizontalLayout implements View
 		{
 			setClient(null);
 			panel.setVisible(false);
-			setVisible(false);
+			
 		}
 
 		public void initLayout() 
@@ -181,7 +181,7 @@ public class AddressBookView extends HorizontalLayout implements View
 		
 		public void setClient(Client client)
 		{
-			setVisible(true);
+			panel.setVisible(true);
 			this.client = client;
 			binder.setBean(client);
 		}
