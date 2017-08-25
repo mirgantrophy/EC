@@ -7,6 +7,7 @@
 
 package io.valhala.ecenter.view;
 
+import com.vaadin.client.ui.VTabsheet.Tab;
 import com.vaadin.data.Binder;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
@@ -16,26 +17,18 @@ import com.vaadin.ui.Button;
 import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.Label;
 import com.vaadin.ui.TabSheet;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
-import io.valhala.ecenter.domain.Client;
-import io.valhala.ecenter.domain.ClientRepository;
-
+import io.valhala.ecenter.temp.Client;
 import java.util.Arrays;
 import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 
 @SpringView(name = AddressBookView.VIEW_NAME)
 @SpringComponent
 public class AddressBookView extends HorizontalLayout implements View
 {
-	@Autowired
-	private ClientRepository userRepository;
-	
 	public static final String VIEW_NAME = "Address Book";
 	private TabSheet panel = new TabSheet();
 	Grid<Client> contactList = new Grid<>(Client.class);
@@ -64,7 +57,6 @@ public class AddressBookView extends HorizontalLayout implements View
 	private TextField filter = new TextField();
 	private Button addContact = new Button("New Client");
 	private ClientHistory history = new ClientHistory();
-
 	
 	public AddressBookView()
 	{
@@ -104,7 +96,6 @@ public class AddressBookView extends HorizontalLayout implements View
 		
 		contactList.setSelectionMode(Grid.SelectionMode.SINGLE);
 		contactList.setColumns("firstName", "lastName");
-
 		contactList.setItems(clients);
 		
 		contactList.asSingleSelect().addValueChangeListener(event -> 
@@ -124,7 +115,7 @@ public class AddressBookView extends HorizontalLayout implements View
 		});
 		contactList.setSizeFull();
 	}
-	
+
 	@Override
 	public void enter(ViewChangeEvent event) {
 	}
@@ -139,11 +130,9 @@ public class AddressBookView extends HorizontalLayout implements View
 	
 	private class ContactForm extends FormLayout
 	{
-		//todo: medicine, past treatments, start date fields!
 		private Client client;
 		private Button save, delete, cancel;
 		private TextField firstName, lastName, email, address, phoneNumber;
-		private Label firstNameLbl;
 	    private Binder<Client> binder = new Binder<>(Client.class);
 		public ContactForm()
 		{
@@ -158,7 +147,6 @@ public class AddressBookView extends HorizontalLayout implements View
 			save = new Button("Save");
 			cancel = new Button("Cancel");
 			cancel.addClickListener(e -> this.cancel());
-			
 			
 			firstName = new TextField();
 			firstName.setPlaceholder("First Name");
@@ -198,4 +186,6 @@ public class AddressBookView extends HorizontalLayout implements View
 			binder.setBean(client);
 		}
 	}
+	
+
 }

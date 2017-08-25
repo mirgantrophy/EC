@@ -1,54 +1,32 @@
-/*
- * Entity object pretty much complete here
- * finish Rest API implementation
- * connect UI to write to db
- */
-package io.valhala.ecenter.domain;
+package io.valhala.ecenter.temp;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 
-@Entity
-@Table(name = "clients")
 public class Client implements Serializable, Cloneable
 {
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long id;
 	@NotNull
 	private String firstName, lastName, address, email, startDate, phoneNumber;
 	@Null
-	private String medicine, pastTreatments, notes;
-
-	
-	protected Client(String firstName, String lastName)
+	private String medicine, pastTreatments;
+	@NotNull
+	private long userId;
+	public Client(String firstName, String lastName, String address, String email, String phoneNumber, String startDate, String medicine, String pastTreatments, long userId)
 	{
-		this.firstName = firstName;
-		this.lastName = lastName;
-	}
-	
-	protected Client(long id, String firstName, String lastName, String address, String email, String phoneNumber, String startDate, String medicine, String pastTreatments, String notes)
-	{
-		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
+		this.userId = userId;
 		this.startDate = startDate;
 		this.medicine = medicine;
 		this.pastTreatments = pastTreatments;
-		this.notes = notes;
 	}
 	
-	public Client(String firstName, String lastName, String address, String email, String phoneNumber) 
+	public Client(String firstName, String lastName, String address, String email, String phoneNumber)
 	{
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -57,8 +35,11 @@ public class Client implements Serializable, Cloneable
 		this.phoneNumber = phoneNumber;
 	}
 	
-	public Client() {}
-
+	public Client()
+	{
+		
+	}
+	
 	public String getMedicine() {return medicine;}
 	
 	public void setMedicine(String medicine) {this.medicine = medicine;}
@@ -81,9 +62,7 @@ public class Client implements Serializable, Cloneable
 	
 	public String getphoneNumber() {return phoneNumber;}
 	
-	public void setId(long id) {this.id = id;}
-	
-	public long getId() {return id;}
+	public long getuserId() {return userId;}
 	
 	public void setfirstName(String firstName) {this.firstName = firstName;}
 	
@@ -94,10 +73,11 @@ public class Client implements Serializable, Cloneable
 	public void setEmail(String email) {this.email = email;}
 	
 	public void setphoneNumber(String phoneNumber) {this.phoneNumber = phoneNumber;}
-
-	public void setNotes(String notes) {this.notes = notes;}
 	
-	public String getNotes() {return notes;}
+	public void setuserId(long userId)
+	{
+		
+	}
 	
 	public String toString()
 	{
