@@ -41,13 +41,13 @@
 
   	  &[width-range~="701px-"] {
   	    .dashboard-panel-slot {
-  	      width: 50% !important;
+  	      width: 100% !important;
   	    }
   	  }
 
       &[height-range~="0-440px"] {
   	    .dashboard-panel-slot {
-  	      height: 100%;
+  	      height: 50%;
   	    }
   	  }
 
